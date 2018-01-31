@@ -9,7 +9,7 @@ exports.defaultOptions = {
 }
 
 exports.spawnWorker = function spawnWorker(instance, workerOptions){
-    var cp = fork(workerOptions.workerPath);
+    var cp = fork(workerOptions.workerPath, [], {execArgv: []});
     cp.on('message', packet => {
         instance._recv(packet);
     });
